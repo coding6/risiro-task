@@ -1,0 +1,9 @@
+package com.risirotask.service.submitter;
+
+import com.risirotask.interfaces.TaskProcessor;
+import com.risirotask.interfaces.TaskConfig;
+
+public interface TaskProducer {
+
+    <T, R extends TaskConfig> TaskProcessor<T, R> newTask(T task, R taskConfig);
+}
