@@ -1,28 +1,31 @@
-package com.risirotask.interfaces.data;
+package com.risirotask.service.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.risirotask.config.TaskProperties;
 import com.risirotask.interfaces.TaskConfig;
 import com.risirotask.service.submitter.TaskSubmitter;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Map;
 
 @Getter
 @Setter
-public class TaskContext<T, R extends TaskConfig> {
-
-    private TaskSubmitter taskSubmitter;
+@NoArgsConstructor
+public class TaskContext<T> {
 
     private T task;
 
-    private R taskConfig;
+    private TaskProperties.TaskConfigProperties taskConfig;
 
     private TaskInfo taskInfo;
 
     private Map<String, Object> context;
 
-    public TaskContext(TaskSubmitter taskSubmitter, T task, R taskConfig, Map<String, Object> context, TaskInfo taskInfo) {
-        this.taskSubmitter = taskSubmitter;
+
+
+    public TaskContext(T task, TaskProperties.TaskConfigProperties taskConfig, Map<String, Object> context, TaskInfo taskInfo) {
         this.task = task;
         this.taskConfig = taskConfig;
         this.context = context;

@@ -1,5 +1,9 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class SumTask {
     private Integer a;
 

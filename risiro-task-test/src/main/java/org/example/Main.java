@@ -1,56 +1,56 @@
 package org.example;
 
+import com.risirotask.service.worker.interfaces.IWorker;
+import com.risirotask.service.worker.manager.WorkerManager;
+import com.risirotask.util.SpringContextUtil;
+import com.risirotask.annotation.AutoRisiroTask;
 import com.risirotask.interfaces.TaskConfig;
 import com.risirotask.service.submitter.LocalTaskSubmitter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.risirotask.service.submitter.RedisTaskSubmitter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.List;
 
+@RestController
+@AutoRisiroTask
+@SpringBootApplication(scanBasePackages = {
+        "com.risirotask.config"
+})
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SumTaskHandler.class);
-        LocalTaskSubmitter localTaskSubmitter = new LocalTaskSubmitter(applicationContext);
+
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
+
+    @GetMapping("/test")
+    public void test() throws InterruptedException {
+        RedisTaskSubmitter redisTaskSubmitter = new RedisTaskSubmitter();
         SumTask sumTask = new SumTask(5, 6);
-        SumTaskConfig sumTaskConfig = new SumTaskConfig();
         for (int i = 0; i < 10; i++) {
-            localTaskSubmitter.newTask(sumTask, sumTaskConfig).context("key1", "val1").asyncSubmit().subscribe();
+            redisTaskSubmitter
+                    .newTask(sumTask, "org.example.SumTaskHandler#0")
+                    .context("key1", "val1")
+                    .asyncSubmit()
+                    .subscribe();
         }
 
-        ApplicationContext applicationContextB = new AnnotationConfigApplicationContext(Sum2TaskHandler.class);
-        LocalTaskSubmitter localTaskSubmitter2 = new LocalTaskSubmitter(applicationContextB);
-        SumTask2 sumTask2 = new SumTask2(2, 3);
-        SumTaskConfig2 sumTaskConfig2 = new SumTaskConfig2();
-
-        for (int i = 0; i < 10; i++) {
-            localTaskSubmitter2.newTask(sumTask2, sumTaskConfig2).context("key1", "val2").asyncSubmit().subscribe();
-        }
-        Thread.sleep(100000);
-    }
-
-    static class SumTaskConfig implements TaskConfig {
-
-        @Override
-        public String getTaskConsumerBeanName() {
-            return "sumTask";
-        }
-
-        @Override
-        public long getRunningTimeout() {
-            return 1000L;
-        }
-    }
-
-    static class SumTaskConfig2 implements TaskConfig {
-
-        @Override
-        public String getTaskConsumerBeanName() {
-            return "sumTask2";
-        }
-
-        @Override
-        public long getRunningTimeout() {
-            return 1000L;
-        }
+//        LocalTaskSubmitter localTaskSubmitter2 = new LocalTaskSubmitter();
+//        SumTask2 sumTask2 = new SumTask2(2, 3);
+//
+//        for (int i = 0; i < 10; i++) {
+//            localTaskSubmitter2.newTask(sumTask2, "org.example.Sum2TaskHandler#0").context("key1", "val2").asyncSubmit().subscribe();
+//        }
+//
+//        Thread.sleep(2000);
+//        List<IWorker> values = WorkerManager.ALL_WORKERS.get("org.example.Sum2TaskHandler#0");
+//        WorkerManager.getInstance().stop(new ArrayList<>(values));
+//        Thread.sleep(100000);
     }
 }

@@ -1,6 +1,5 @@
 package com.risirotask.service.listen;
 
-import com.risirotask.interfaces.data.TaskContext;
 import net.jodah.expiringmap.ExpirationPolicy;
 import net.jodah.expiringmap.ExpiringMap;
 

@@ -1,4 +1,4 @@
-package com.risirotask.interfaces.data;
+package com.risirotask.service.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

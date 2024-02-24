@@ -1,4 +1,4 @@
-package com.risirotask.interfaces.data;
+package com.risirotask.service.data;
 
 public enum TaskState {
 

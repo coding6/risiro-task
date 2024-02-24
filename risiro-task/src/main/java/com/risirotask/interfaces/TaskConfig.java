@@ -11,6 +11,8 @@ public interface TaskConfig {
 
     int MAX_RETRY_TIMES = 3;
 
+    int WORKER_NUM = 6;
+
     String getTaskConsumerBeanName();
 
     default long getRunningTimeout() {
@@ -19,6 +21,10 @@ public interface TaskConfig {
 
     default long getRetryTimes() {
         return MAX_RETRY_TIMES;
+    }
+
+    default int getWorkerNum() {
+        return WORKER_NUM;
     }
 
 }

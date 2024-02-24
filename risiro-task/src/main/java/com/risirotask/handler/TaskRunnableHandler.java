@@ -1,14 +1,14 @@
 package com.risirotask.handler;
 
 import com.risirotask.exception.TaskException;
-import com.risirotask.interfaces.data.WorkerContext;
+import com.risirotask.service.data.WorkerContext;
 
 /**
  * @description 实现该接口的handler，自定义任务的处理逻辑
  * @param <T>
  */
 @FunctionalInterface
-public interface TaskRunnableHandler<T> {
+public interface TaskRunnableHandler<T> extends TaskHandler<T> {
 
     /**
      * 业务方实现这个方法，自定义任务的处理逻辑

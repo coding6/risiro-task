@@ -5,5 +5,5 @@ import com.risirotask.interfaces.TaskConfig;
 
 public interface TaskProducer {
 
-    <T, R extends TaskConfig> TaskProcessor<T, R> newTask(T task, R taskConfig);
+    <T> TaskProcessor<T> newTask(T task, String taskName);
 }
