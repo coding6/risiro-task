@@ -1,0 +1,18 @@
+redis:
+  url: redis://my-redis.orb.local:6379
+tasks:
+  configs:
+    - consumerBeanName: org.example.SumTaskHandler#0
+      taskName: org.example.SumTaskHandler#0
+      dataType: org.example.SumTask
+      runningTimeout: 10000
+      retryTimes: 3
+      workerNum: 2
+      type: REDIS
+    - consumerBeanName: org.example.Sum2TaskHandler#0
+      taskName: org.example.Sum2TaskHandler#0
+      dataType: org.example.SumTask2
+      runningTimeout: 15000
+      retryTimes: 3
+      workerNum: 1
+      type: LOCAL
