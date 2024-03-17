@@ -20,9 +20,9 @@ public class RedisStorage {
     private final RedisReactiveCommands<String, String> redisCommands;
 
     private RedisStorage() {
-        SpringContextUtil
+        TaskProperties.RedisConfigProperties redisProperties = SpringContextUtil
                 .getBean("tasks-com.risirotask.config.TaskProperties", TaskProperties.class)
-                .getRedis()
+                .getRedis();
         String redisUrl = redisProperties.getUrl();
         RedisClient redisClient = RedisClient.create(redisUrl);
         StatefulRedisConnection<String, String> connection = redisClient.connect();
