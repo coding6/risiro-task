@@ -17,4 +17,8 @@ public interface TaskRunnableHandler<T> extends TaskHandler<T> {
      */
     void handler(T taskRequest, WorkerContext workerContext) throws TaskException;
 
+    default void fail(T taskRequest, WorkerContext workerContext) {
+
+    }
+
 }

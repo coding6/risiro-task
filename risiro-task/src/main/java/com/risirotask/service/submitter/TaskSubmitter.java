@@ -7,7 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface TaskSubmitter extends TaskProducer {
 
-    <T> Mono<String> asyncSubmit(TaskContext<T> taskContext);
-
+    <T> Mono<String> submit(TaskContext<T> taskContext);
 
 }

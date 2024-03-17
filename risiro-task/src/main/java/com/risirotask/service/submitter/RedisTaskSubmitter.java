@@ -2,22 +2,12 @@ package com.risirotask.service.submitter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.risirotask.config.TaskProperties;
 import com.risirotask.constant.Constant;
-import com.risirotask.interfaces.TaskConfig;
 import com.risirotask.interfaces.TaskProcessor;
 import com.risirotask.service.data.TaskContext;
 import com.risirotask.service.storage.RedisStorage;
-import io.lettuce.core.RedisClient;
-import io.lettuce.core.api.StatefulRedisConnection;
-import io.lettuce.core.api.reactive.RedisReactiveCommands;
-import io.lettuce.core.codec.ByteArrayCodec;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class RedisTaskSubmitter implements TaskSubmitter {
@@ -28,7 +18,7 @@ public class RedisTaskSubmitter implements TaskSubmitter {
     }
 
     @Override
-    public <T> Mono<String> asyncSubmit(TaskContext<T> taskContext) {
+    public <T> Mono<String> submit(TaskContext<T> taskContext) {
         return generateTaskId()
                 .flatMap(taskId -> {
                     try {

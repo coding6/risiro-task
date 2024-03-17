@@ -9,7 +9,6 @@ import com.risirotask.service.submitter.TaskSubmitter;
 import com.risirotask.util.SpringContextUtil;
 import reactor.core.publisher.Mono;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,14 +35,14 @@ public class TaskProcessor<T> {
         this.taskConfig = taskConfig;
     }
 
-    public Mono<String> asyncSubmit() {
+    public Mono<String> submit() {
         TaskContext<T> taskContext = new TaskContext<>(
                 task,
                 taskConfig,
                 contexts,
                 getTaskInfo()
         );
-        return taskSubmitter.asyncSubmit(taskContext)
+        return taskSubmitter.submit(taskContext)
                 .doOnNext(taskId -> listenTask(taskId, taskContext.getTaskConfig().getRunningTimeout()));
     }
 

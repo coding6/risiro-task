@@ -9,7 +9,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>org.risiro</groupId>
     <artifactId>risiro-task-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>

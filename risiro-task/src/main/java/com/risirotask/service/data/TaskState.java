@@ -5,6 +5,7 @@ public enum TaskState {
     PENDING,
     RUNNING,
     COMPLATE,
-    TIMEOUT;
+    TIMEOUT,
+    FAILED;
 
 }

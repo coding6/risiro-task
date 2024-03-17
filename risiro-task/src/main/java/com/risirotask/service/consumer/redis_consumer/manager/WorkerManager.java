@@ -1,19 +1,14 @@
-package com.risirotask.service.worker.manager;
+package com.risirotask.service.consumer.redis_consumer.manager;
 
 import com.risirotask.config.TaskProperties;
+import com.risirotask.service.consumer.redis_consumer.RedisWorker;
 import com.risirotask.service.storage.RedisStorage;
 import com.risirotask.util.SpringContextUtil;
 import com.risirotask.handler.TaskHandler;
-import com.risirotask.interfaces.TaskConfig;
-import com.risirotask.service.data.TaskContext;
-import com.risirotask.service.worker.RedisWorker;
-import com.risirotask.service.worker.Worker;
-import com.risirotask.service.worker.interfaces.IWorker;
-import com.risirotask.service.worker.interfaces.IWorkerManager;
+import com.risirotask.service.consumer.redis_consumer.interfaces.IWorker;
+import com.risirotask.service.consumer.redis_consumer.interfaces.IWorkerManager;
 import lombok.extern.slf4j.Slf4j;
-import reactor.core.publisher.Flux;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -33,15 +28,6 @@ public class WorkerManager implements IWorkerManager{
 
     public static final ConcurrentHashMap<String, List<IWorker>> ALL_WORKERS = new ConcurrentHashMap<>(1);
 
-    @Override
-    public List<IWorker> createWorkers(TaskProperties.TaskConfigProperties taskConfig, Flux<TaskContext<?>> flux) {
-        TaskHandler<?> handler = SpringContextUtil.getBean(taskConfig.getConsumerBeanName(), TaskHandler.class);
-        Worker worker = new Worker(handler, flux, String.format("worker-%s-%d", taskConfig.getConsumerBeanName(), 0), taskConfig.getWorkerNum(), 1000);
-        List<IWorker> workers = List.of(worker);
-        ALL_WORKERS.put(taskConfig.getConsumerBeanName(), workers);
-
-        return workers;
-    }
 
     @Override
     public List<IWorker> createRedisWorkers(TaskProperties.TaskConfigProperties taskConfig) {
@@ -57,12 +43,11 @@ public class WorkerManager implements IWorkerManager{
     }
 
     @Override
-    public void start(List<IWorker> workers) {
-        workers.forEach(IWorker::start);
-    }
-
-    @Override
-    public void stop(List<IWorker> workers) {
-        workers.forEach(IWorker::stop);
+    public void stop() {
+        List<IWorker> allWorkers = ALL_WORKERS.values()
+                .stream()
+                .flatMap(List::stream)
+                .toList();
+        allWorkers.forEach(IWorker::stop);
     }
 }

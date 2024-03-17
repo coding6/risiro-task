@@ -1,4 +1,4 @@
-package com.risirotask.service.worker;
+package com.risirotask.service.consumer.redis_consumer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
@@ -6,15 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.risirotask.constant.Constant;
 import com.risirotask.handler.TaskHandler;
 import com.risirotask.handler.TaskRunnableHandler;
-import com.risirotask.interfaces.TaskConfig;
+import com.risirotask.service.consumer.redis_consumer.interfaces.TaskRunInterceptor;
 import com.risirotask.service.data.TaskContext;
 import com.risirotask.service.data.TaskState;
 import com.risirotask.service.data.WorkerContext;
 import com.risirotask.service.storage.RedisStorage;
-import com.risirotask.service.worker.interfaces.IWorker;
-import lombok.NoArgsConstructor;
+import com.risirotask.service.consumer.redis_consumer.interfaces.IWorker;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.StringUtils;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -30,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @param <T>
  */
 @Slf4j
-public class RedisWorker<T> implements IWorker {
+public class RedisWorker<T> implements IWorker, TaskRunInterceptor {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
@@ -58,21 +56,6 @@ public class RedisWorker<T> implements IWorker {
         this.taskName = taskName;
     }
 
-    private Mono<TaskContext<?>> apply(String val) {
-        try {
-            TaskContext<?> taskContext = MAPPER.readValue(val, TaskContext.class);
-            String dataType = taskContext.getTaskConfig().getDataType();
-            Class<?> taskClass = Class.forName(dataType);
-            JavaType taskType = MAPPER.getTypeFactory().constructParametricType(TaskContext.class, taskClass);
-            taskContext = MAPPER.readValue(val, taskType);
-            return Mono.just(taskContext);
-        } catch (JsonProcessingException e) {
-            return Mono.empty();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public void start() {
         isRunning.set(true);
@@ -82,6 +65,7 @@ public class RedisWorker<T> implements IWorker {
                         .filter(Objects::nonNull))
                 .repeat(isRunning::get)
                 .flatMap(this::apply)
+                .flatMap(this::beforeRun)
                 .flatMap(this::run)
                 .flatMap(this::afterRun)
                 .onErrorContinue((throwable, element) -> {
@@ -110,7 +94,33 @@ public class RedisWorker<T> implements IWorker {
                 .subscribe(null, null, runScheduler::dispose);
     }
 
+    /**
+     * 将redis中的结果取出来的结果转为TaskContext对象
+     * @param val
+     * @return
+     */
+    private Mono<TaskContext<?>> apply(String val) {
+        try {
+            TaskContext<?> taskContext = MAPPER.readValue(val, TaskContext.class);
+            String dataType = taskContext.getTaskConfig().getDataType();
+            Class<?> taskClass = Class.forName(dataType);
+            JavaType taskType = MAPPER.getTypeFactory().constructParametricType(TaskContext.class, taskClass);
+            taskContext = MAPPER.readValue(val, taskType);
+            return Mono.just(taskContext);
+        } catch (JsonProcessingException e) {
+            return Mono.empty();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public <T> Mono<TaskContext<T>> beforeRun(TaskContext<T> taskContext) {
+        return Mono.just(taskContext);
+    }
+
     @SuppressWarnings("unchecked")
+    @Override
     public <T> Mono<TaskContext<T>> run(TaskContext<T> taskContext) {
         WorkerContext workerContext = new WorkerContext(taskContext.getTaskInfo().getTaskId(), taskContext.getContext());
         if (runner instanceof TaskRunnableHandler) {
@@ -120,6 +130,7 @@ public class RedisWorker<T> implements IWorker {
         return Mono.just(taskContext);
     }
 
+    @Override
     public <T> Mono<TaskContext<T>> afterRun(TaskContext<T> taskContext) {
         taskContext.getTaskInfo().setTaskState(TaskState.COMPLATE);
         System.out.println(Thread.currentThread().getName() + ":" + taskContext.getTaskInfo().getTaskState());

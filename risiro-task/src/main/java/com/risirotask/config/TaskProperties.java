@@ -14,6 +14,8 @@ public class TaskProperties {
 
     private List<TaskConfigProperties> configs;
 
+    public RedisConfigProperties redis;
+
     @Data
     public static class TaskConfigProperties {
         private String dataType;
@@ -23,6 +25,13 @@ public class TaskProperties {
         private long retryTimes;
         private int workerNum;
         private TaskType type;
+        private Class<?> retryWhenErr;
+    }
+
+    @Data
+    public static class RedisConfigProperties {
+        private String url;
+        private Boolean enableWorker;
     }
 
     @Getter

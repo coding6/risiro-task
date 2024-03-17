@@ -1,25 +1,15 @@
 package com.risirotask.service.storage;
 
-import com.risirotask.config.RedisProperties;
-import com.risirotask.constant.Constant;
+import com.risirotask.config.TaskProperties;
 import com.risirotask.util.SpringContextUtil;
 import io.lettuce.core.RedisClient;
-import io.lettuce.core.StreamMessage;
-import io.lettuce.core.XReadArgs;
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.lettuce.core.api.reactive.RedisReactiveCommands;
-import io.lettuce.core.codec.ByteArrayCodec;
 import lombok.Getter;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.Duration;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Properties;
 
 @Getter
 public class RedisStorage {
@@ -30,7 +20,9 @@ public class RedisStorage {
     private final RedisReactiveCommands<String, String> redisCommands;
 
     private RedisStorage() {
-        RedisProperties redisProperties = SpringContextUtil.getBean("redis-com.risirotask.config.RedisProperties", RedisProperties.class);
+        SpringContextUtil
+                .getBean("tasks-com.risirotask.config.TaskProperties", TaskProperties.class)
+                .getRedis()
         String redisUrl = redisProperties.getUrl();
         RedisClient redisClient = RedisClient.create(redisUrl);
         StatefulRedisConnection<String, String> connection = redisClient.connect();
