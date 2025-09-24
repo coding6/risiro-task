@@ -1,1 +1,1 @@
-com.risirotask.config.WorkerAutoConfiguration
+com.risirotask.core.config.DynamicThreadPoolAutoConfiguration

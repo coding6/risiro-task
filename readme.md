@@ -3,9 +3,7 @@
 * 启动类上需要添加@AutoRisiroTask注解表示开启框架，同时扫描指定路径的包
 ```java
 @AutoRisiroTask
-@SpringBootApplication(scanBasePackages = {
-        "com.risirotask.config"
-})
+@SpringBootApplication
 public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);

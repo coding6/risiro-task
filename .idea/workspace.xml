@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5a2b6cd3-b558-4f05-8c11-fa2022bb6daa" name="Changes" comment="v2.0 支持Redis作为任务队列，优化代码">
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/Sum2TaskHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTask2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTaskHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Sum2TaskHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTask2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTaskHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/annotation/AutoRisiroTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/TaskProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/WorkerAutoConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/constant/Constant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/exception/TaskException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskHandlerRegistrar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskRunnableHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/interfaces/TaskConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/interfaces/TaskProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalExecutorManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/interfaces/ILocalExecutorManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/interfaces/TaskRunInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/DisruptorQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/TaskEventFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/interfaces/IDisruptorQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/RedisWorker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/IWorker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/IWorkerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/TaskRunInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/manager/WorkerManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/WorkerContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/WorkerStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/listen/TaskListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/IRetry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/Retry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/RetryConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/storage/RedisStorage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/LocalTaskSubmitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/RedisTaskSubmitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/TaskProducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/TaskSubmitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/util/SpringContextUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="AnnotationType" />
+        <option value="package-info" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/io/projectreactor/reactor-core/3.4.25/reactor-core-3.4.25.jar!/reactor/core/publisher/ParallelFlux.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar!/lombok/extern/slf4j/Slf4j.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-21.0.1/Contents/Home/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/Library/Java/JavaVirtualMachines/openjdk-21.0.1/Contents/Home/lib/src.zip!/java.base/java/lang/Thread.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2awAagr4BEuVvNpqNMPenvUbghs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Library/java_app/risiro-task/risiro-task-test/src/main/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.risirotask.core.processor" />
+      <recent name="com.risirotask.core.metrics.reporter" />
+      <recent name="com.risirotask.core.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/risiro-task-test/src/main/resources" />
+      <recent name="$PROJECT_DIR$/risiro-task/src/main/resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.risirotask.service.consumer.redis_consumer.interfaces" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
+      <module name="risiro-task-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.Test" />
+      <module name="risiro-task-test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="risiro-task-test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a2b6cd3-b558-4f05-8c11-fa2022bb6daa" name="Changes" comment="v1.2 支持链式调用提交任务；支持任务超时过期机制；优化代码结构" />
+      <created>1705219332742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1705219332742</updated>
+      <workItem from="1705219333743" duration="1062000" />
+      <workItem from="1705675370446" duration="7255000" />
+      <workItem from="1705817751712" duration="1846000" />
+      <workItem from="1706281851579" duration="238000" />
+      <workItem from="1706325783687" duration="43659000" />
+      <workItem from="1707199327626" duration="1342000" />
+      <workItem from="1707200683196" duration="61988000" />
+      <workItem from="1708176652742" duration="208000" />
+      <workItem from="1708176870906" duration="204000" />
+      <workItem from="1708240022038" duration="33539000" />
+      <workItem from="1709180071518" duration="3172000" />
+      <workItem from="1709819859827" duration="13913000" />
+      <workItem from="1710403785047" duration="52124000" />
+      <workItem from="1711183893546" duration="8922000" />
+      <workItem from="1711724825899" duration="599000" />
+      <workItem from="1711982655745" duration="2000" />
+      <workItem from="1712380586177" duration="1459000" />
+      <workItem from="1718010988798" duration="101000" />
+      <workItem from="1726325086478" duration="2407000" />
+      <workItem from="1758332191403" duration="654000" />
+      <workItem from="1758332855131" duration="35476000" />
+      <workItem from="1758547568495" duration="48000" />
+      <workItem from="1758547636699" duration="678000" />
+      <workItem from="1758635731022" duration="4512000" />
+    </task>
+    <task id="LOCAL-00001" summary="v2.0 支持Redis作为任务队列，优化代码">
+      <option name="closed" value="true" />
+      <created>1708752280904</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708752280904</updated>
+    </task>
+    <task id="LOCAL-00002" summary="v2.0 支持Redis作为任务队列，优化代码">
+      <option name="closed" value="true" />
+      <created>1708752375139</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708752375139</updated>
+    </task>
+    <task id="LOCAL-00003" summary="v3.0 重构本地队列，使用Disruptor作为本地队列；优化代码manager代码">
+      <option name="closed" value="true" />
+      <created>1710686870545</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710686870545</updated>
+    </task>
+    <task id="LOCAL-00004" summary="bugfix">
+      <option name="closed" value="true" />
+      <created>1710686992499</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710686992499</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+    <MESSAGE value="v1.2 支持链式调用提交任务；支持任务超时过期机制；优化代码结构" />
+    <MESSAGE value="v3.0 重构本地队列，使用Disruptor作为本地队列；优化代码manager代码" />
+    <MESSAGE value="v2.0 支持Redis作为任务队列，优化代码" />
+    <MESSAGE value="bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskHandlerRegistrar.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/RedisWorker.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalConsumer.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalConsumer.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalConsumer.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/RetryConsumer.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/WorkerAutoConfiguration.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.risirotask.service.worker.Worker" memberName="flux" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="Thread.currentThread().getName()" language="JAVA" />
+        <watch expression="fluxSinkMap" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
