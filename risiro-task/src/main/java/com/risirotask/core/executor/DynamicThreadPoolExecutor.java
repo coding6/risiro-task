@@ -1,6 +1,6 @@
 package com.risirotask.core.executor;
 
-import com.risirotask.core.config.ThreadPoolConfig;
+import com.risirotask.config.ThreadPoolConfig;
 import com.risirotask.core.context.ThreadContext;
 import com.risirotask.core.metrics.collector.MetricsCollector;
 import com.risirotask.core.metrics.reporter.MetricsReporter;
@@ -8,6 +8,7 @@ import com.risirotask.core.queue.DynamicLinkedBlockingQueue;
 import com.risirotask.core.queue.DynamicRejectedExecutionHandler;
 import lombok.Getter;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -52,20 +53,17 @@ public class DynamicThreadPoolExecutor extends ThreadPoolExecutor {
     }
 
     @Override
-    public void execute(Runnable task) {
+    public void execute(@Nullable Runnable task) {
         super.execute(wrapTask(task));
     }
 
     private Runnable wrapTask(Runnable task) {
         Map<String, Object> capture = ThreadContext.capture();
         return () -> {
-            long startTime = System.currentTimeMillis();
             try {
                 //2.恢复上下文
                 ThreadContext.restore(capture);
                 task.run();
-            } catch (Exception e) {
-                throw e;
             } finally {
                 //3.清理上下文
                 ThreadContext.clear();

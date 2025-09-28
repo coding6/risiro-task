@@ -1,1 +1,3 @@
-com.risirotask.core.config.DynamicThreadPoolAutoConfiguration
+com.risirotask.config.DynamicThreadPoolAutoConfiguration
+com.risirotask.config.ConfigCenterAutoConfiguration
+com.risirotask.config.MetricAutoConfiguration

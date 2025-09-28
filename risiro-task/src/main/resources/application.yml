@@ -1,0 +1,11 @@
+# risiro-task/src/main/resources/application.yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true

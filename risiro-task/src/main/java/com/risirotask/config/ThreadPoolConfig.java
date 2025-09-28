@@ -1,6 +1,6 @@
-package com.risirotask.core.config;
+package com.risirotask.config;
 
-import com.risirotask.core.queue.DynamicLinkedBlockingQueue;
+import com.risirotask.core.metrics.config.data.ThreadPoolJsonConfig;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,18 +38,10 @@ public class ThreadPoolConfig {
         this.threadFactory = Executors.defaultThreadFactory();
     }
 
-    public static ThreadPoolConfig fromExecutor(String poolName, ThreadPoolExecutor executor) {
-        BlockingQueue<Runnable> queue = executor.getQueue();
-        int queueCapacity = queue instanceof DynamicLinkedBlockingQueue ?
-                ((DynamicLinkedBlockingQueue<Runnable>) queue).getCapacity() : queue.size() + queue.remainingCapacity();
-
-        return new ThreadPoolConfig(poolName,
-                executor.getCorePoolSize(),
-                executor.getMaximumPoolSize(),
-                executor.getKeepAliveTime(TimeUnit.SECONDS),
-                TimeUnit.SECONDS,
-                queueCapacity,
-                executor.getRejectedExecutionHandler()
-        );
+    public ThreadPoolConfig(ThreadPoolJsonConfig config) {
+        this.corePoolSize = config.getCorePoolSize();
+        this.maximumPoolSize = config.getMaximumPoolSize();
+        this.keepAliveTime = config.getKeepAliveTime();
+        this.queueCapacity =  config.getQueueCapacity();
     }
 }

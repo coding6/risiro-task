@@ -21,7 +21,6 @@ public class MetricsCollector {
     public MetricsCollector(MetricsReporter reporter, String poolName) {
         this.reporter = reporter;
         this.poolName = poolName;
-        this.reporter.init(poolName);
     }
 
     public void collect(DynamicThreadPoolExecutor executor) {

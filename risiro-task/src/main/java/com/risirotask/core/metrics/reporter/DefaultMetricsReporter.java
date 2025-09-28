@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 public class DefaultMetricsReporter implements MetricsReporter {
-    @Override
-    public void init(String poolName) {}
 
     @Override
     public void report(String poolName, Map<ThreadPoolMetrics, Number> metrics) {

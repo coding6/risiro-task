@@ -1,3 +1,27 @@
+server:
+  port: 8081
 risiro-task:
   thread-pool:
     enabled: true
+  config-center:
+    type: apollo
+    namespace: application
+  monitor:
+    type: prometheus
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    prometheus:
+      enabled: true
+    metrics:
+      enabled: true
+app:
+  id: SampleApp
+apollo:
+  meta: http://127.0.0.1:8080
+  bootstrap:
+    enabled: true
+    namespaces: application

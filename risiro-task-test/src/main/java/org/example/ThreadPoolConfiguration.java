@@ -1,9 +1,7 @@
 package org.example;
 
-import com.risirotask.core.config.ThreadPoolConfig;
+import com.risirotask.config.ThreadPoolConfig;
 import com.risirotask.core.executor.DynamicThreadPoolExecutor;
-import com.risirotask.core.manager.ThreadPoolManager;
-import com.risirotask.core.metrics.reporter.MetricsReporter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

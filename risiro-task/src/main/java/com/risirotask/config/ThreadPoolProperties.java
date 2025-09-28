@@ -1,4 +1,4 @@
-package com.risirotask.core.config;
+package com.risirotask.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

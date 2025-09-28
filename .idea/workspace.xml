@@ -5,58 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a2b6cd3-b558-4f05-8c11-fa2022bb6daa" name="Changes" comment="v2.0 支持Redis作为任务队列，优化代码">
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/Sum2TaskHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTask2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/SumTaskHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/ThreadPoolConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/src/main/java/org/example/ThreadPoolConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/risiro-task-test/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/application.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/Sum2TaskHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTask2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task-test/target/classes/org/example/SumTaskHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/annotation/AutoRisiroTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/TaskProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/WorkerAutoConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/constant/Constant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/exception/TaskException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskHandlerRegistrar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/handler/TaskRunnableHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/interfaces/TaskConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/interfaces/TaskProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/LocalExecutorManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/interfaces/ILocalExecutorManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/interfaces/TaskRunInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/DisruptorQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/TaskEventFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/local_consumer/queue/interfaces/IDisruptorQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/RedisWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/IWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/IWorkerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/interfaces/TaskRunInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/consumer/redis_consumer/manager/WorkerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/TaskState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/WorkerContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/data/WorkerStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/listen/TaskListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/IRetry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/Retry.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/retry/RetryConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/storage/RedisStorage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/LocalTaskSubmitter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/RedisTaskSubmitter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/TaskProducer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/TaskSubmitter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/service/submitter/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/util/SpringContextUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/config/DynamicThreadPoolAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/DynamicThreadPoolAutoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/config/ThreadPoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/ThreadPoolConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/config/ThreadPoolMonitorProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/ThreadPoolMonitorProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/config/ThreadPoolProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/ThreadPoolProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/executor/DynamicThreadPoolExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/executor/DynamicThreadPoolExecutor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/manager/ThreadPoolManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/manager/ThreadPoolManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/collector/MetricsCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/collector/MetricsCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/enu/ThreadPoolMetrics.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/enu/ThreadPoolMetrics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/DefaultMetricsReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/DefaultMetricsReporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/MetricsReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/MetricsReporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/PrometheusMetricsReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/PrometheusMetricsReporter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/factory/MetricsReporterFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/spring/ThreadPoolPostProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/spring/ThreadPoolPostProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/risiro-task/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" beforeDir="false" afterPath="$PROJECT_DIR$/risiro-task/src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,8 +36,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="package-info" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -86,6 +53,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -214,7 +184,9 @@
       <workItem from="1758332855131" duration="35476000" />
       <workItem from="1758547568495" duration="48000" />
       <workItem from="1758547636699" duration="678000" />
-      <workItem from="1758635731022" duration="4512000" />
+      <workItem from="1758635731022" duration="33587000" />
+      <workItem from="1758977389810" duration="461000" />
+      <workItem from="1758977860133" duration="6053000" />
     </task>
     <task id="LOCAL-00001" summary="v2.0 支持Redis作为任务队列，优化代码">
       <option name="closed" value="true" />
@@ -312,6 +284,11 @@
           <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/config/WorkerAutoConfiguration.java</url>
           <line>37</line>
           <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/risiro-task/src/main/java/com/risirotask/core/metrics/reporter/MetricsReporter.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,11 +1,9 @@
 package com.risirotask.spring;
 
-import com.risirotask.core.config.ThreadPoolMonitorProperties;
 import com.risirotask.core.executor.DynamicThreadPoolExecutor;
 import com.risirotask.core.manager.ThreadPoolManager;
-import com.risirotask.core.metrics.reporter.factory.MetricsReporterFactory;
+import com.risirotask.core.metrics.reporter.MetricsReporter;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
@@ -15,16 +13,19 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  */
 public class ThreadPoolPostProcessor implements BeanPostProcessor {
 
-    @Autowired
-    private ThreadPoolManager manager;
+    private final ThreadPoolManager manager;
 
-    @Autowired
-    private MetricsReporterFactory factory;
+    private final MetricsReporter reporter;
+
+    public ThreadPoolPostProcessor(ThreadPoolManager manager, MetricsReporter reporter) {
+        this.manager = manager;
+        this.reporter = reporter;
+    }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof DynamicThreadPoolExecutor executor) {
-            executor.setMetricsCollector(factory.chooseReporter());
+            executor.setMetricsCollector(reporter);
             // 确保线程池被注册
             manager.register(executor);
             executor.scheduleMetricsCollection();

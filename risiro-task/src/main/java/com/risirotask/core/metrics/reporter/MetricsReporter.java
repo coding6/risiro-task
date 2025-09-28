@@ -10,6 +10,5 @@ import java.util.Map;
  * @description
  */
 public interface MetricsReporter {
-    void init(String poolName);
     void report(String poolName, Map<ThreadPoolMetrics, Number> metrics);
 }

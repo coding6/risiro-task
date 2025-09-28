@@ -1,4 +1,4 @@
-package com.risirotask.core.config;
+package com.risirotask.config;
 
 import lombok.Data;
 import lombok.Getter;
@@ -18,7 +18,8 @@ public class ThreadPoolMonitorProperties {
         LOG, PROMETHEUS, CUSTOM
     }
 
-    private MonitorType type = MonitorType.LOG; // 默认使用日志监控
+    private final MonitorType type = MonitorType.LOG; // 默认使用日志监控
+
     private CustomMonitorProperties custom;
 
     @Data
